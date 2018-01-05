@@ -23,7 +23,10 @@
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
 
         private void ClosedWindow(object sender, System.EventArgs e)

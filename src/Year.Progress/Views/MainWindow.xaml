@@ -11,7 +11,7 @@
         SizeToContent="Height" ResizeMode="NoResize" 
         WindowStyle="None" AllowsTransparency="True"
         Background="#3F000000" Foreground="White" 
-        MouseDown="MoveWindow" Closed="ClosedWindow">
+        MouseLeftButtonDown="MoveWindow" Closed="ClosedWindow">
 
     <Window.DataContext>
         <ViewModels:YearProgressViewModels/>
