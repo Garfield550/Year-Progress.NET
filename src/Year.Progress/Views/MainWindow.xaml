@@ -10,83 +10,119 @@
         Title="Year Progress" Width="200" 
         SizeToContent="Height" ResizeMode="NoResize" 
         WindowStyle="None" AllowsTransparency="True"
-        Background="#3F000000" Foreground="White" 
+        Background="#00000000" Foreground="White" 
         MouseLeftButtonDown="MoveWindow" Closed="ClosedWindow">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimationUsingKeyFrames 
+                        Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
+                        Storyboard.TargetName="Window">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" 
+                                             Value="#3F000000">
+                            <EasingColorKeyFrame.EasingFunction>
+                                <CircleEase EasingMode="EaseIn"/>
+                            </EasingColorKeyFrame.EasingFunction>
+                        </EasingColorKeyFrame>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ColorAnimationUsingKeyFrames 
+                        Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
+                        Storyboard.TargetName="Window">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" 
+                                             Value="{Binding Background, ElementName=Window}">
+                            <EasingColorKeyFrame.EasingFunction>
+                                <CircleEase EasingMode="EaseOut"/>
+                            </EasingColorKeyFrame.EasingFunction>
+                        </EasingColorKeyFrame>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 
     <Window.DataContext>
         <ViewModels:YearProgressViewModels/>
     </Window.DataContext>
 
-    <Grid Margin="8">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <Grid Background="#01000000">
+        <Grid Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" FontSize="14" 
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="14" 
                        Text="{Binding Title, ElementName=Window}" />
-            <Button x:Name="CloseButton" Grid.Column="1"
+                <Button x:Name="CloseButton" Grid.Column="1"
                     Height="20" Width="20" Click="CloseWindow" 
                     Template="{StaticResource CloseButton}"
                     Foreground="White">
-                <Viewbox Width="16" Height="16">
-                    <Canvas Width="24" Height="24">
-                        <Path Fill="{Binding Foreground, ElementName=CloseButton}" 
+                    <Viewbox Width="16" Height="16">
+                        <Canvas Width="24" Height="24">
+                            <Path Fill="{Binding Foreground, ElementName=CloseButton}" 
                               Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-                    </Canvas>
-                </Viewbox>
-            </Button>
-        </Grid>
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+            </Grid>
 
-        <Grid Grid.Row="1" Margin="0,8,0,4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" Margin="0,8,0,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Horizontal"
+                <StackPanel Grid.Column="0" Orientation="Horizontal"
                         VerticalAlignment="Bottom">
-                <TextBlock Text="Time" FontSize="16" Padding="5,0,5,2" />
-                <TextBlock x:Name="TimeText"
+                    <TextBlock Text="Time" FontSize="16" Padding="5,0,5,2" />
+                    <TextBlock x:Name="TimeText"
                            Text="{Binding Time.Value}" 
                            FontSize="16" />
-            </StackPanel>
+                </StackPanel>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal"
+                <StackPanel Grid.Column="1" Orientation="Horizontal"
                         VerticalAlignment="Bottom">
-                <TextBlock x:Name="ProgressText" Text="{Binding Progress.Value}"
+                    <TextBlock x:Name="ProgressText" Text="{Binding Progress.Value}"
                            FontSize="24" FontWeight="Light" />
-                <TextBlock Text="%" FontSize="10" 
+                    <TextBlock Text="%" FontSize="10" 
                            VerticalAlignment="Bottom" Padding="0,0,5,4" />
-            </StackPanel>
-        </Grid>
+                </StackPanel>
+            </Grid>
 
-        <ProgressBar x:Name="YearProgressBar" Grid.Row="2"
+            <ProgressBar x:Name="YearProgressBar" Grid.Row="2"
                      Height="18" Value="{Binding Progress.Value}" 
                      RenderTransformOrigin="0.5,0.5">
-            
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                    <!--<SkewTransform AngleY="0" AngleX="0"/>-->
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
 
-        <tb:TaskbarIcon Grid.Row="3" IconSource="/StaticFiles/App.ico" 
+                <ProgressBar.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                        <!--<SkewTransform AngleY="0" AngleX="0"/>-->
+                    </TransformGroup>
+                </ProgressBar.RenderTransform>
+            </ProgressBar>
+
+            <tb:TaskbarIcon Grid.Row="3" IconSource="/StaticFiles/App.ico" 
                         ToolTipText="{Binding Title, ElementName=Window}">
-            <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Exit" Click="CloseWindow"/>
-                </ContextMenu>
-            </tb:TaskbarIcon.ContextMenu>
-        </tb:TaskbarIcon>
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Exit" Click="CloseWindow"/>
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
+        </Grid>
     </Grid>
 </Window>
