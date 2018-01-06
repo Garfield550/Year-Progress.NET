@@ -12,6 +12,14 @@
         {
             InitializeComponent();
 
+            // Ref: https://stackoverflow.com/questions/534261/how-do-you-keep-user-config-settings-across-different-assembly-versions-in-net/534335#534335
+            if (Properties.Settings.Default.UpgradeRequired)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
+            }
+
             Left = Properties.Settings.Default.WindowLeft;
             Top = Properties.Settings.Default.WindowTop;
         }
