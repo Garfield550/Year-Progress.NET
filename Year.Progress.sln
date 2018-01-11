@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Blend for Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Year.Progress", "src\Year.Progress\Year.Progress.csproj", "{18D18468-F161-4DAF-9FF3-62C5EF33CB4D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{5C35CDAD-9EA0-4B7F-9FED-9564ED6AAB7C}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -15,9 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{497C
 		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Year.Progress", "src\Year.Progress\Year.Progress.csproj", "{18D18468-F161-4DAF-9FF3-62C5EF33CB4D}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveProperty.Platform.NET46", "lib\ReactiveProperty\Source\ReactiveProperty.Platform.NET46\ReactiveProperty.Platform.NET46.csproj", "{883C5447-2778-43E4-8CDE-6A594B342ACD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveProperty.NETStandard", "lib\ReactiveProperty\Source\ReactiveProperty.NETStandard\ReactiveProperty.NETStandard.csproj", "{38D9FCE8-1EF8-48F3-9335-581FC78DD96E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveProperty.NETStandard", "lib\ReactiveProperty\Source\ReactiveProperty.NETStandard\ReactiveProperty.NETStandard.csproj", "{38D9FCE8-1EF8-48F3-9335-581FC78DD96E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
