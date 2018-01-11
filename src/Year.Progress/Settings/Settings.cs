@@ -27,5 +27,19 @@
         {
             // Add code to handle the SettingsSaving event here.
         }
+
+        internal void UpdatePosition(double left, double top)
+        {
+            Default.WindowLeft = left;
+            Default.WindowTop = top;
+            Default.Save();
+        }
+
+        internal void UpgradeSettings()
+        {
+            Default.Upgrade();
+            Default.UpgradeRequired = false;
+            Default.Save();
+        }
     }
 }
