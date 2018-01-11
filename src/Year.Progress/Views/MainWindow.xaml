@@ -11,7 +11,7 @@
         SizeToContent="Height" ResizeMode="NoResize" 
         WindowStyle="None" AllowsTransparency="True"
         Background="#00000000" Foreground="White" 
-        MouseLeftButtonDown="MoveWindow" Closed="ClosedWindow">
+        MouseLeftButtonDown="MoveWindow">
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseEnter">
             <BeginStoryboard>
@@ -35,8 +35,8 @@
                     <ColorAnimationUsingKeyFrames 
                         Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
                         Storyboard.TargetName="Window">
-                        <EasingColorKeyFrame KeyTime="0:0:0.1" 
-                                             Value="{Binding Background, ElementName=Window}">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1"
+                                             Value="#00000000">
                             <EasingColorKeyFrame.EasingFunction>
                                 <CircleEase EasingMode="EaseOut"/>
                             </EasingColorKeyFrame.EasingFunction>
